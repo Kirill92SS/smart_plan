@@ -2,3 +2,4 @@
 venv/
 plan_main/.pgpass
 data/
+*pycache*
