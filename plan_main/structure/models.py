@@ -4,9 +4,9 @@ from django.utils import timezone
 
 class BaseModel(models.Model):
     name = models.CharField(max_length=256)
-    guid = models.CharField(max_length=36, null=True)
     created = models.DateTimeField(auto_now_add=True)
     edited = models.DateTimeField(auto_now=True)
+    is_deleted = models.BooleanField(default=False)
 
     def __str__(self):
         return self.name
@@ -29,8 +29,6 @@ class DepartmentType(BaseModel):
 class Department(BaseModel):
     factory = models.ForeignKey('Factory', on_delete=models.PROTECT)
     id_parent = models.IntegerField(null=True)
-    id_parent_guid = models.CharField(max_length=36, null=True)
     date_begin = models.DateField()
     date_end = models.DateField(null=True)
     department_type = models.ForeignKey('DepartmentType', on_delete=models.PROTECT)
-    id_department_type = models.CharField(max_length=36, null=True)
