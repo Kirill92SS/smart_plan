@@ -21,6 +21,9 @@ class Factory(BaseModel):
     address = models.CharField(max_length=256)
     f_address = models.CharField(max_length=256, null=True)
 
+    class Meta:
+        verbose_name_plural = 'Factories'
+
 
 class DepartmentType(BaseModel):
     pass
